@@ -2,15 +2,16 @@ package com.driver;
 
 public class F1 extends Car {
 
-
     public F1(String name, boolean isManual) {
         //Use arbitrary values for parameters which are not mentioned
-        super(name, 5, 5, 6, isManual, "Convertible", 3 );
-
+        super(name,4,4,6, isManual,"convertible",5);
     }
 
+
+
     public void accelerate(int rate){
-        int newSpeed = rate + getCurrentSpeed();// set the value of new speed by using currentSpeed and rate
+        int newSpeed = 0; //set the value of new speed by using currentSpeed and rate
+        newSpeed = getCurrentSpeed() + rate;
         /**
          * speed 0: gear 1
          * speed 1-50: gear 1
@@ -21,46 +22,41 @@ public class F1 extends Car {
          * speed more than 250: gear 6
          */
 
+
+
         if(newSpeed == 0) {
             //Stop the car, set gear as 1
-            setCurrentSpeed(0);
-            setGears(1);
-
+            stop();
+            setCurrentGear(1);
         }
-        //for all other cases, change the gear accordingly
-
-        else if(newSpeed >=1 && newSpeed <=50){
-            setGears(1);
+        else if(newSpeed >=1 && newSpeed<=50) {
             setCurrentSpeed(newSpeed);
+            setCurrentGear(1);
         }
-
-        else if(newSpeed >= 51 && newSpeed <= 100){
-            setGears(2);
+        else if(newSpeed >=51 && newSpeed<=100) {
             setCurrentSpeed(newSpeed);
+            setCurrentGear(2);
         }
-
-        else if(newSpeed >= 101 && newSpeed <= 150){
-            setGears(3);
+        else if(newSpeed >=101 && newSpeed<=150) {
             setCurrentSpeed(newSpeed);
+            setCurrentGear(3);
         }
-
-        else if(newSpeed >= 151 && newSpeed <= 200){
-            setGears(4);
+        else if(newSpeed >=151 && newSpeed<=200) {
             setCurrentSpeed(newSpeed);
+            setCurrentGear(4);
         }
-
-        else if(newSpeed >= 201 && newSpeed <= 250){
-            setGears(5);
+        else if(newSpeed >=201 && newSpeed<=250) {
             setCurrentSpeed(newSpeed);
+            setCurrentGear(5);
         }
-
-        else {// (newSpeed>250)
-            setGears(6);
+        else if(newSpeed >250) {
             setCurrentSpeed(newSpeed);
+            setCurrentGear(6);
         }
 
         //for all other cases, change the gear accordingly
-        if(newSpeed > 0){
+
+        if(newSpeed > 0) {
             changeSpeed(newSpeed, getCurrentDirection());
         }
     }
